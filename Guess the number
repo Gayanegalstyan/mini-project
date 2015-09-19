@@ -1,0 +1,47 @@
+
+import simplegui
+import math
+import random 
+
+num_range=100
+secret_number=0
+
+def new_game():
+    print " New game. Range is from 0 to 100"
+    global num_range
+    global secret_number
+    secret_number= random.randrange(0,num_range)
+    
+    
+def range100():
+    global num_range
+    num_range = 100
+
+    
+def input_guess(guess):
+    global secret_number
+    print "guess",guess
+    
+    if int(guess)==secret_number:
+        print "Correct! You won!"
+        new_game()
+    elif int(guess) > secret_number:
+        print "Lower!"
+    else:
+        print "Higher!"
+   
+    
+    
+# create frame
+frame=simplegui.create_frame("Guess the numer",300,300)
+new_game()
+
+frame.add_button("Range is [0,100)",range100,200)
+frame.add_input("Enter a guess",input_guess,200)
+
+
+# register event handlers for control elements and start frame
+frame.start()
+
+
+
