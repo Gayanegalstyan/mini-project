@@ -15,6 +15,11 @@ def draw(canvas):
     # Update ball position
     ball_pos[0] += vel[0]
     ball_pos[1] += vel[1]
+    
+    #collide and reflect off of left hand side of canvas
+    if ball_pos[0]<= BALL_RADIUS:
+    vel[0] = -vel[0]
+    
 
     # Draw ball
     canvas.draw_circle(ball_pos, BALL_RADIUS, 2, "Red", "White")
